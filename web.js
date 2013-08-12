@@ -3,7 +3,7 @@ var app = express();
 app.set('port', process.env.PORT || 5000);
 
 app.get('/', function(request, response) {
-    fs.readFile(__dirname + '/public/index.html', 'utf8', function(err, text) {
+    fs.readFile('/bitstarter/index.html', 'utf8', function(err, text) {
 
     response.send(text);
    });
