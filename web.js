@@ -1,15 +1,16 @@
-var express = require('express'), http = require('http'), fs = require('fs');
-var app = express();
-app.set('port', process.env.PORT || 5000);
+var express = require('express'), fs = require('fs');
+var app = express.createServer(express.logger());
+
 
 app.get('/', function(request, response) {
-    fs.readFile('/bitstarter/index.html', 'utf8', function(err, text) {
+    var readfile = fs.readFileSync("index.html").toString(); {
 
-    response.send(text);
+    response.send(readfile);
    });
 });
 
-http.createServer(app).listen(app.get('port'), function(){
+var port = process.env.PORT || 5000;
+app.listen(port, function() {
 
-  console.log('Server started at ' + app.get('port'));
+  console.log("Listening on " + port);
 });
